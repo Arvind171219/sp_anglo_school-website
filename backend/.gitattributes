@@ -1,0 +1,7 @@
+# Ensure shell scripts have LF line endings (critical for Docker builds)
+*.sh text eol=lf
+mvnw text eol=lf
+
+# Keep Windows batch files with CRLF
+*.cmd text eol=crlf
+*.bat text eol=crlf
