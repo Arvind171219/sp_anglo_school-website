@@ -632,11 +632,12 @@ ul { list-style: none; }
 .btn-white { background: white; color: var(--primary); box-shadow: var(--shadow-md); }
 .btn-white:hover { box-shadow: var(--shadow-lg); }
 .btn-outline {
-  background: transparent;
-  border: 2px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.6);
   color: white;
+  backdrop-filter: blur(4px);
 }
-.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+.btn-outline:hover { background: rgba(255,255,255,0.2); border-color: white; }
 .btn-success {
   background: linear-gradient(135deg, #2e7d32, #43a047);
   color: white;
@@ -1832,8 +1833,8 @@ ul { list-style: none; }
   .carousel-prev { left: 0.4rem; }
   .carousel-next { right: 0.4rem; }
   .carousel-dots { bottom: 62px; }
-  .hero-buttons { flex-direction: column; align-items: center; gap: 0.6rem; }
-  .hero-buttons .btn { width: 80%; max-width: 280px; text-align: center; padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+  .hero-buttons { flex-direction: column; align-items: center; gap: 0.6rem; z-index: 10; position: relative; }
+  .hero-buttons .btn { width: 80%; max-width: 280px; text-align: center; padding: 0.75rem 1.5rem; font-size: 0.9rem; min-height: 46px; }
   .hero-stats-bar { position: relative; }
   .hero-stats-inner { grid-template-columns: repeat(4, 1fr); gap: 0.25rem; padding: 0.6rem 0.75rem; }
   .hero-stat-number { font-size: 1.1rem; }
@@ -1953,7 +1954,7 @@ ul { list-style: none; }
   /* --- Hero Carousel --- */
   .hero-text h1 { font-size: 1.8rem; }
   .hero-carousel { height: 60vh; min-height: 350px; max-height: 450px; }
-  .carousel-content { padding: 1rem; padding-bottom: 4rem; }
+  .carousel-content { padding: 1rem; padding-bottom: 4.5rem; }
   .carousel-content .hero-badge { font-size: 0.65rem; padding: 0.2rem 0.6rem; margin-bottom: 0.6rem; }
   .carousel-title { font-size: 1.35rem; line-height: 1.3; margin-bottom: 0.4rem; }
   .carousel-sub { font-size: 0.8rem; margin-bottom: 1rem; }
@@ -1963,7 +1964,16 @@ ul { list-style: none; }
   .hero-stats-inner { grid-template-columns: repeat(2, 1fr); gap: 0.2rem; padding: 0.4rem 0.5rem; }
   .hero-stat-number { font-size: 0.95rem; }
   .hero-stat-label { font-size: 0.58rem; }
-  .hero-buttons .btn { width: 90%; font-size: 0.85rem; padding: 0.65rem 1rem; }
+  .hero-buttons .btn { width: 90%; font-size: 0.85rem; padding: 0.7rem 1rem; min-height: 44px; }
+
+  /* --- Buttons general --- */
+  .btn-lg { padding: 0.75rem 1.5rem; font-size: 0.9rem; min-height: 44px; }
+  .btn-group .btn { min-height: 44px; }
+  .cta-section .btn { min-height: 46px; font-size: 0.88rem; }
+  .btn-outline {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.7);
+  }
 
   /* --- Feature Cards --- */
   .features-grid { gap: 0.6rem; }
