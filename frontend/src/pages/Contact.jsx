@@ -138,7 +138,7 @@ export default function Contact() {
             <h2>Nearby Landmarks & Schools</h2>
             <p>Schools and villages near S P Anglo Academy, Noniya</p>
           </div>
-          {/* <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}> */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
             {[
               'GMS Chatia', 'GMS Dubaha', 'GMS Dubey Tola', 'GMS Malahi Boys',
               'GMS Manguraha', 'GMS Nauadih', 'GMS Nonea', 'GMS Paharpur Boys',
