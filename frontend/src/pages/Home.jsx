@@ -215,7 +215,7 @@ export default function Home() {
               </>
             )}
           </div>
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
             <Link to="/announcements" className="btn btn-primary">View All Announcements</Link>
           </div>
         </div>

@@ -131,33 +131,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Nearby Reference */}
-      <section className="section" style={{ background: 'white', paddingTop: 0 }}>
-        <div className="container">
-          <div className="section-header animate-on-scroll">
-            <h2>Nearby Landmarks & Schools</h2>
-            <p>Schools and villages near S P Anglo Academy, Noniya</p>
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
-            {[
-              'GMS Chatia', 'GMS Dubaha', 'GMS Dubey Tola', 'GMS Malahi Boys',
-              'GMS Manguraha', 'GMS Nauadih', 'GMS Nonea', 'GMS Paharpur Boys',
-              'GMS Pakadia', 'GMS Sareya Bajar', 'GMS Siswa Bajar'
-            ].map((name, i) => (
-              <span key={i} style={{
-                padding: '0.4rem 1rem',
-                background: 'var(--bg)',
-                borderRadius: '20px',
-                fontSize: '0.85rem',
-                color: 'var(--text-light)',
-              }}>
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="cta-section">
         <div className="container">
           <h2>Visit Our Campus</h2>
