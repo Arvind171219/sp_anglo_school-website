@@ -117,7 +117,7 @@ export default function Home() {
             <h2>Why Choose S P Anglo Academy</h2>
             <p>Providing quality education in the heart of Paharpur, Purba Champaran</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+          <div className="features-grid">
             {[
               { icon: '&#128218;', title: 'Hindi Medium Education', desc: 'Strong foundation in Hindi medium instruction with focus on understanding and communication skills.', color: '#e3f2fd' },
               { icon: '&#128187;', title: 'Computer Aided Learning', desc: 'Computer aided learning lab available to give students exposure to modern technology.', color: '#e8f5e9' },

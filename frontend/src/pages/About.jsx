@@ -40,7 +40,7 @@ export default function About() {
                 classrooms, a library with 500+ books, a playground, and computer-aided learning facilities
                 ensures a complete learning environment.
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="about-stats-grid">
                 {[
                   { n: '21', l: 'Total Teachers' },
                   { n: '13', l: 'Classrooms' },
@@ -61,18 +61,18 @@ export default function About() {
       <section className="section" style={{ background: 'white' }}>
         <div className="container">
           <div className="section-header animate-on-scroll"><h2>Our Vision & Mission</h2></div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-            <div className="animate-on-scroll animate-delay-1" style={{ padding: '2rem', background: 'linear-gradient(135deg, var(--primary), var(--primary-light))', borderRadius: '20px', color: 'white' }}>
-              <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>&#128065; Our Vision</h3>
-              <p style={{ opacity: 0.9, lineHeight: 1.8 }}>
+          <div className="vision-mission-grid">
+            <div className="vm-card vision animate-on-scroll animate-delay-1">
+              <h3>&#128065; Our Vision</h3>
+              <p>
                 To be a leading educational institution in Purba Champaran that empowers rural children
                 with quality education, strong moral values, and the skills needed to succeed.
                 Every child deserves access to good education regardless of location.
               </p>
             </div>
-            <div className="animate-on-scroll animate-delay-2" style={{ padding: '2rem', background: 'linear-gradient(135deg, var(--accent), var(--accent-light))', borderRadius: '20px', color: 'white' }}>
-              <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>&#127919; Our Mission</h3>
-              <p style={{ opacity: 0.9, lineHeight: 1.8 }}>
+            <div className="vm-card mission animate-on-scroll animate-delay-2">
+              <h3>&#127919; Our Mission</h3>
+              <p>
                 To provide affordable, quality Hindi-medium education with modern teaching methods.
                 To create a safe, nurturing environment where every student can grow academically,
                 physically, and morally. To bridge the urban-rural education gap in Bihar.

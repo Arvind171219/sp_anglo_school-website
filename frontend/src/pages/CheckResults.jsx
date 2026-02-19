@@ -274,9 +274,9 @@ export default function CheckResults() {
       <section className="section">
         <div className="container" style={{ maxWidth: '850px' }}>
           {/* Search Form */}
-          <div className="card" style={{ borderTop: '4px solid var(--primary)' }}>
+          <div className="card result-search-card" style={{ borderTop: '4px solid var(--primary)' }}>
             <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-              <div style={{
+              <div className="result-icon" style={{
                 width: '60px', height: '60px', borderRadius: '50%',
                 background: 'linear-gradient(135deg, #1a237e, #3949ab)',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -311,19 +311,24 @@ export default function CheckResults() {
                   />
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '0.5rem' }} disabled={loading}>
-                {loading ? 'Searching...' : 'View My Results'}
+              <button
+                type="submit"
+                className={`btn btn-primary btn-lg${loading ? ' result-loading-btn' : ''}`}
+                style={{ width: '100%', marginTop: '0.5rem' }}
+                disabled={loading}
+              >
+                {loading ? <><span className="spinner" /> Searching...</> : 'View My Results'}
               </button>
             </form>
           </div>
 
           {/* Error */}
           {error && (
-            <div className="card" style={{
+            <div className="card result-error-card" style={{
               marginTop: '1.5rem', textAlign: 'center', padding: '2rem',
               borderLeft: '4px solid #c62828', background: '#fff5f5',
             }}>
-              <span style={{ fontSize: '2.5rem' }}>&#9888;</span>
+              <span className="error-icon" style={{ fontSize: '2.5rem' }}>&#9888;</span>
               <p style={{ color: '#c62828', marginTop: '0.5rem', fontWeight: 600, fontSize: '1rem' }}>{error}</p>
               <p style={{ color: '#888', fontSize: '0.85rem', marginTop: '0.5rem' }}>
                 If you think this is an error, please contact the school office.
@@ -336,15 +341,15 @@ export default function CheckResults() {
             <div style={{ marginTop: '1.5rem' }}>
 
               {/* ===== REPORT CARD ===== */}
-              <div className="card" style={{
+              <div className="card report-card-enter" style={{
                 padding: 0, overflow: 'hidden',
                 border: '2px solid #1a237e', borderRadius: '12px',
               }}>
 
                 {/* School Header */}
-                <div style={{
+                <div className="report-card-header" style={{
                   background: 'linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%)',
-                  color: 'white', textAlign: 'center', padding: '1.5rem 1.5rem 1.25rem',
+                  color: 'white', textAlign: 'center',
                 }}>
                   <h1 style={{ fontSize: '1.5rem', fontWeight: 900, letterSpacing: '2px', margin: 0 }}>
                     S P ANGLO ACADEMY
@@ -375,6 +380,7 @@ export default function CheckResults() {
                       return (
                         <button
                           key={key}
+                          className="exam-tab-btn"
                           onClick={() => setSelectedExam(key)}
                           style={{
                             padding: '0.35rem 1rem', borderRadius: '20px', border: 'none',
@@ -382,7 +388,6 @@ export default function CheckResults() {
                             background: isActive ? '#1a237e' : 'white',
                             color: isActive ? 'white' : '#1a237e',
                             boxShadow: isActive ? '0 2px 8px rgba(26,35,126,0.3)' : '0 1px 3px rgba(0,0,0,0.1)',
-                            transition: 'all 0.2s',
                           }}
                         >
                           {exam} ({year})
@@ -398,10 +403,7 @@ export default function CheckResults() {
 
                 {/* Student Info */}
                 <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid #e8e8e8', background: '#fafbff' }}>
-                  <div style={{
-                    display: 'grid', gridTemplateColumns: '1fr 1fr',
-                    gap: '0.6rem 2rem', fontSize: '0.9rem',
-                  }}>
+                  <div className="result-student-info">
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <span style={{ color: '#666', minWidth: '95px' }}>Student Name</span>
                       <strong>: {student.firstName} {student.lastName}</strong>
@@ -429,10 +431,11 @@ export default function CheckResults() {
 
                 {/* Marks Table */}
                 {currentResults.length > 0 && (
-                  <div style={{ padding: '1.25rem 1.5rem' }}>
+                  <div className="report-card-body">
+                    <div className="result-table-wrap">
                     <table style={{
                       width: '100%', borderCollapse: 'collapse',
-                      fontSize: '0.9rem',
+                      fontSize: '0.9rem', minWidth: '500px',
                     }}>
                       <thead>
                         <tr style={{ background: '#1a237e' }}>
@@ -446,7 +449,7 @@ export default function CheckResults() {
                       </thead>
                       <tbody>
                         {currentResults.map((r, i) => (
-                          <tr key={r.id} style={{
+                          <tr key={r.id} className="result-table-row" style={{
                             background: i % 2 === 0 ? 'white' : '#f8f9ff',
                             borderBottom: '1px solid #e8e8e8',
                           }}>
@@ -482,7 +485,7 @@ export default function CheckResults() {
                         ))}
 
                         {/* Total Row */}
-                        <tr style={{
+                        <tr className="result-total-row" style={{
                           background: 'linear-gradient(135deg, #e8eaf6, #c5cae9)',
                           borderTop: '2px solid #1a237e',
                         }}>
@@ -511,45 +514,43 @@ export default function CheckResults() {
                         </tr>
                       </tbody>
                     </table>
+                    </div>
 
                     {/* Result Summary */}
-                    <div style={{
-                      marginTop: '1.25rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr',
-                      gap: '0.75rem',
-                    }}>
-                      <div style={{
+                    <div className="result-summary-grid">
+                      <div className="summary-card" style={{
                         textAlign: 'center', padding: '1rem 0.5rem', borderRadius: '10px',
                         background: '#e3f2fd', border: '1px solid #bbdefb',
                       }}>
-                        <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#1565c0' }}>{currentResults.length}</div>
+                        <div className="num" style={{ fontSize: '1.4rem', fontWeight: 900, color: '#1565c0' }}>{currentResults.length}</div>
                         <div style={{ fontSize: '0.75rem', color: '#555', marginTop: '0.15rem' }}>Subjects</div>
                       </div>
-                      <div style={{
+                      <div className="summary-card" style={{
                         textAlign: 'center', padding: '1rem 0.5rem', borderRadius: '10px',
                         background: '#e8f5e9', border: '1px solid #c8e6c9',
                       }}>
-                        <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#2e7d32' }}>{totalObtained}/{totalMax}</div>
+                        <div className="num" style={{ fontSize: '1.4rem', fontWeight: 900, color: '#2e7d32' }}>{totalObtained}/{totalMax}</div>
                         <div style={{ fontSize: '0.75rem', color: '#555', marginTop: '0.15rem' }}>Total Marks</div>
                       </div>
-                      <div style={{
+                      <div className="summary-card" style={{
                         textAlign: 'center', padding: '1rem 0.5rem', borderRadius: '10px',
                         background: percentage >= 60 ? '#e8f5e9' : percentage >= 33 ? '#fff3e0' : '#fce4ec',
                         border: `1px solid ${percentage >= 60 ? '#c8e6c9' : percentage >= 33 ? '#ffe0b2' : '#f8bbd0'}`,
                       }}>
-                        <div style={{
+                        <div className="num" style={{
                           fontSize: '1.4rem', fontWeight: 900,
                           color: percentage >= 60 ? '#2e7d32' : percentage >= 33 ? '#e65100' : '#c62828',
                         }}>{percentage}%</div>
                         <div style={{ fontSize: '0.75rem', color: '#555', marginTop: '0.15rem' }}>Percentage</div>
                       </div>
-                      <div style={{
+                      <div className="summary-card" style={{
                         textAlign: 'center', padding: '1rem 0.5rem', borderRadius: '10px',
                         background: passStatus === 'PASS'
                           ? 'linear-gradient(135deg, #e8f5e9, #c8e6c9)'
                           : 'linear-gradient(135deg, #fce4ec, #f8bbd0)',
                         border: `1px solid ${passStatus === 'PASS' ? '#a5d6a7' : '#ef9a9a'}`,
                       }}>
-                        <div style={{
+                        <div className="num" style={{
                           fontSize: '1.4rem', fontWeight: 900,
                           color: passStatus === 'PASS' ? '#1b5e20' : '#b71c1c',
                         }}>{passStatus}</div>
@@ -558,7 +559,7 @@ export default function CheckResults() {
                     </div>
 
                     {/* Grade Scale */}
-                    <div style={{
+                    <div className="grade-scale-bar" style={{
                       marginTop: '1rem', padding: '0.6rem 1rem', background: '#f5f5f5',
                       borderRadius: '8px', fontSize: '0.75rem', color: '#888', textAlign: 'center',
                     }}>
@@ -567,20 +568,8 @@ export default function CheckResults() {
 
                     {/* Download Button */}
                     <div style={{ textAlign: 'center', marginTop: '1.5rem', paddingBottom: '0.5rem' }}>
-                      <button
-                        onClick={downloadPDF}
-                        style={{
-                          padding: '0.75rem 2rem', borderRadius: '10px', border: 'none',
-                          background: 'linear-gradient(135deg, #1a237e, #3949ab)',
-                          color: 'white', fontWeight: 700, fontSize: '0.95rem',
-                          cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                          boxShadow: '0 4px 15px rgba(26,35,126,0.3)',
-                          transition: 'transform 0.2s, box-shadow 0.2s',
-                        }}
-                        onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(26,35,126,0.4)'; }}
-                        onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(26,35,126,0.3)'; }}
-                      >
-                        <span style={{ fontSize: '1.1rem' }}>&#128196;</span>
+                      <button onClick={downloadPDF} className="result-download-btn">
+                        <span className="dl-icon" style={{ fontSize: '1.1rem' }}>&#128196;</span>
                         Download Report Card (PDF)
                       </button>
                     </div>
@@ -592,8 +581,8 @@ export default function CheckResults() {
 
           {/* Student found but no results */}
           {searched && !loading && !error && student && results.length === 0 && (
-            <div className="card" style={{ marginTop: '1.5rem', textAlign: 'center', padding: '2.5rem' }}>
-              <span style={{ fontSize: '3rem' }}>&#128196;</span>
+            <div className="card result-no-data" style={{ marginTop: '1.5rem', textAlign: 'center', padding: '2.5rem' }}>
+              <span className="no-data-icon" style={{ fontSize: '3rem' }}>&#128196;</span>
               <h3 style={{ color: '#555', marginTop: '0.75rem' }}>No Results Published Yet</h3>
               <p style={{ color: '#888', fontSize: '0.9rem' }}>
                 Results for <strong>{student.firstName} {student.lastName}</strong> ({student.rollNumber}) have not been published yet.
