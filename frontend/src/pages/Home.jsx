@@ -87,28 +87,29 @@ export default function Home() {
             <button key={i} className={`carousel-dot ${i === current ? 'active' : ''}`} onClick={() => setCurrent(i)} />
           ))}
         </div>
+      </section>
 
-        <div className="hero-stats-bar">
-          <div className="hero-stats-inner">
-            <div>
-              <div className="hero-stat-number">13+</div>
-              <div className="hero-stat-label">Years of Service</div>
-            </div>
-            <div>
-              <div className="hero-stat-number">21</div>
-              <div className="hero-stat-label">Dedicated Teachers</div>
-            </div>
-            <div>
-              <div className="hero-stat-number">13</div>
-              <div className="hero-stat-label">Classrooms</div>
-            </div>
-            <div>
-              <div className="hero-stat-number">1-8</div>
-              <div className="hero-stat-label">Classes Offered</div>
-            </div>
+      {/* Stats Bar - Below Carousel */}
+      <div className="hero-stats-bar">
+        <div className="hero-stats-inner">
+          <div>
+            <div className="hero-stat-number">13+</div>
+            <div className="hero-stat-label">Years of Service</div>
+          </div>
+          <div>
+            <div className="hero-stat-number">21</div>
+            <div className="hero-stat-label">Dedicated Teachers</div>
+          </div>
+          <div>
+            <div className="hero-stat-number">13</div>
+            <div className="hero-stat-label">Classrooms</div>
+          </div>
+          <div>
+            <div className="hero-stat-number">1-8</div>
+            <div className="hero-stat-label">Classes Offered</div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Features */}
       <section className="section">

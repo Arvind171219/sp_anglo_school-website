@@ -481,6 +481,7 @@ ul { list-style: none; }
 .carousel-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.45) 0%,
@@ -500,7 +501,6 @@ ul { list-style: none; }
   text-align: center;
   color: white;
   padding: 2rem;
-  padding-bottom: 5rem;
 }
 .carousel-content .hero-badge {
   background: rgba(255, 111, 0, 0.85);
@@ -559,7 +559,7 @@ ul { list-style: none; }
 .carousel-next { right: 1.25rem; }
 .carousel-dots {
   position: absolute;
-  bottom: 75px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -586,11 +586,9 @@ ul { list-style: none; }
 }
 
 .hero-stats-bar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0; z-index: 6;
-  background: rgba(26, 35, 126, 0.85);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  z-index: 6;
+  background: linear-gradient(135deg, #1a237e, #283593);
 }
 .hero-stats-inner {
   max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
@@ -1555,7 +1553,9 @@ ul { list-style: none; }
   width: 400px; height: 400px;
   background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
   border-radius: 50%;
+  pointer-events: none;
 }
+.cta-section .container { position: relative; z-index: 1; }
 .cta-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
 .cta-section p { opacity: 0.85; font-size: 1.05rem; margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
 
@@ -1826,16 +1826,16 @@ ul { list-style: none; }
   .hero { min-height: 80vh; }
   .hero-text h1 { font-size: 2.2rem; }
   .hero-carousel { height: 65vh; min-height: 400px; max-height: 520px; }
-  .carousel-content { padding: 1.5rem; padding-bottom: 4.5rem; }
+  .carousel-content { padding: 1.5rem; }
+  .carousel-content .hero-badge { font-size: 0.72rem; padding: 0.25rem 0.8rem; margin-bottom: 0.8rem; }
   .carousel-title { font-size: 1.7rem; line-height: 1.25; }
   .carousel-sub { font-size: 0.92rem; margin-bottom: 1.2rem; }
   .carousel-btn { width: 38px; height: 38px; font-size: 1.1rem; }
   .carousel-prev { left: 0.4rem; }
   .carousel-next { right: 0.4rem; }
-  .carousel-dots { bottom: 62px; }
+  .carousel-dots { bottom: 12px; }
   .hero-buttons { flex-direction: column; align-items: center; gap: 0.6rem; z-index: 10; position: relative; }
   .hero-buttons .btn { width: 80%; max-width: 280px; text-align: center; padding: 0.75rem 1.5rem; font-size: 0.9rem; min-height: 46px; }
-  .hero-stats-bar { position: relative; }
   .hero-stats-inner { grid-template-columns: repeat(4, 1fr); gap: 0.25rem; padding: 0.6rem 0.75rem; }
   .hero-stat-number { font-size: 1.1rem; }
   .hero-stat-label { font-size: 0.62rem; }
@@ -1859,6 +1859,7 @@ ul { list-style: none; }
   .gallery-strip-inner { gap: 0.75rem; }
   .gallery-strip-item { width: 140px; height: 95px; border-radius: 8px; }
   .gallery-strip-item span { font-size: 0.72rem; }
+  .gallery-strip-overlay { opacity: 1; }
   .gallery-strip-overlay .btn { font-size: 0.85rem; padding: 0.5rem 1.5rem; }
 
   /* --- Stats --- */
@@ -1954,12 +1955,12 @@ ul { list-style: none; }
   /* --- Hero Carousel --- */
   .hero-text h1 { font-size: 1.8rem; }
   .hero-carousel { height: 60vh; min-height: 350px; max-height: 450px; }
-  .carousel-content { padding: 1rem; padding-bottom: 4.5rem; }
+  .carousel-content { padding: 1rem; }
   .carousel-content .hero-badge { font-size: 0.65rem; padding: 0.2rem 0.6rem; margin-bottom: 0.6rem; }
   .carousel-title { font-size: 1.35rem; line-height: 1.3; margin-bottom: 0.4rem; }
   .carousel-sub { font-size: 0.8rem; margin-bottom: 1rem; }
   .carousel-btn { width: 32px; height: 32px; font-size: 0.9rem; }
-  .carousel-dots { bottom: 48px; }
+  .carousel-dots { bottom: 10px; }
   .carousel-dot { width: 7px; height: 7px; }
   .hero-stats-inner { grid-template-columns: repeat(2, 1fr); gap: 0.2rem; padding: 0.4rem 0.5rem; }
   .hero-stat-number { font-size: 0.95rem; }
